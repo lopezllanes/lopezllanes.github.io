@@ -1,5 +1,6 @@
 body {
 	margin: 50px;
+	background-image: url("Elect3/Fondo.jpg");
 }
 p, td, span, li, a { 
 	font-family: verdana, arial, helvetica, sans-serif; 
@@ -8,6 +9,7 @@ h1 {
 	font: 20pt verdana, arial, helvetica, sans-serif;
 	font-weight: bold;
 	margin: 0 0 5px 0;
+	text-align: center
 }
 h2 {
 	border-bottom: 1px solid #666;
