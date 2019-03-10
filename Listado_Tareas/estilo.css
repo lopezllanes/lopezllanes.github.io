@@ -7,3 +7,16 @@ body {
     
     
 }
+
+p {
+    font-family: 'Overpass', sans-serif;
+}
+
+h1 {
+    font-size: 1.7em;
+    
+}
+
+h2 {
+    font-size: 1.2em;
+}
