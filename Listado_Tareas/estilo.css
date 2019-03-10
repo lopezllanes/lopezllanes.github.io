@@ -24,3 +24,43 @@ h2 {
 .c {
     text-decoration-line: line-through;
 }
+
+.container {
+    text-align: center;
+    
+}
+
+.edit {
+    background-color: aquamarine;
+    border-radius: 8px;
+}
+
+.edit :hover {
+    cursor: pointer;
+    color:#1883ba;
+    background-color: red;
+}
+
+.delete {
+    background-color: bisque;
+    border-radius: 8px;
+}
+
+.add {
+    background-color: chocolate;
+    border-radius: 8px;
+}
+
+#new-task {
+    height: 30px;
+    width: 300px;
+}
+input#new-task {
+    border-radius: 8px;
+    
+}
+
+input#new-task:hover {
+    color: blue;
+}
+
