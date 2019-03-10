@@ -1,20 +1,14 @@
 body {
 	margin: 50px;
     background-color: darkgrey;
-    font-family: 'Tangerine', serif;
+    /* font-family: 'Tangerine', serif; */
+    font-family: 'Barlow', sans-serif;
     font-size: 20px;
     text-shadow: 4px 4px 4px #aaa;
-    
-    
-}
-
-p {
-    font-family: 'Overpass', sans-serif;
 }
 
 h1 {
     font-size: 1.7em;
-    
 }
 
 h2 {
@@ -27,7 +21,10 @@ h2 {
 
 .container {
     text-align: center;
-    
+}
+
+.buttons-font {
+    font-family: "Play"
 }
 
 .edit {
@@ -35,7 +32,7 @@ h2 {
     border-radius: 8px;
 }
 
-.edit :hover {
+.edit:hover {
     cursor: pointer;
     color:#1883ba;
     background-color: red;
@@ -46,21 +43,31 @@ h2 {
     border-radius: 8px;
 }
 
+.delete:hover {
+    cursor: pointer;
+    color:#1883ba;
+    background-color:rebeccapurple;
+}
+
 .add {
     background-color: chocolate;
     border-radius: 8px;
 }
 
-#new-task {
+.add:hover {
+    cursor: pointer;
+    color:#1883ba;
+    background-color:greenyellow;
+}
+
+.task-class {
     height: 30px;
     width: 300px;
-}
-input#new-task {
     border-radius: 8px;
-    
 }
 
-input#new-task:hover {
-    color: blue;
+.task-class:focus {
+    border-color: crimson !important;
+    box-shadow: 6px 6px 0px rgb(163, 7, 7);
+    outline: none;
 }
-

@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="estilo.css"/>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link href="https://fonts.googleapis.com/css?family=Barlow|Sorts+Mill+Goudy|Srisakdi|Play" rel="stylesheet">
     <title>TODO List App</title>
 </head>
+
 <body>
     <div class="container">
         <h1 style="color:green;">Lista de Tareas</h1>
         <p>
             <label for="new-task">Nueva Tarea</label>
-            <input id="new-task" type="text"><button class="add">Agregar</button>
+            <input id="new-task" type="text" class="task-class">
+            <button class="add buttons-font">Agregar</button>
         </p>
-
         <h2 style="color:green;">Lista de Tareas Pendientes</h2>
         <ul id="incomplete-tasks">
-            
-                <label>
-                    <input type="checkbox"/>
-                    Tarea 1
-                </label>
-                <button class="edit">Editar</button>
-                <button class="delete">Borrar</button>
-        </ul> 
+            <label>
+                <input type="checkbox" />
+                Tarea 1
+            </label>
+            <button class="edit buttons-font">Editar</button>
+            <button class="delete buttons-font">Borrar</button>
+        </ul>
         <ul id="incomplete-tasks">
             <label>
-                <input type="checkbox"/>
+                <input type="checkbox" />
                 Tarea 2
             </label>
-            <button class="edit">Editar</button>
-            <button class="delete">Borrar</button>
-        </ul>   
-            
-                
-
-        
-
+            <button class="edit buttons-font">Editar</button>
+            <button class="delete buttons-font">Borrar</button>
+        </ul>
         <h2 style="color:green;">Lista de Tareas Completadas</h2>
         <ul id="completed-tasks">
-            
-                <label class="c" >
-                    <input type="checkbox" checked>
-                    Tarea 0
-                </label>
-                <button class="edit">Editar</button>
-                <button class="delete">Borrar</button>
-            
+            <label class="c">
+                <input type="checkbox" checked>
+                Tarea 0
+            </label>
+            <button class="edit buttons-font">Editar</button>
+            <button class="delete buttons-font">Borrar</button>
         </ul>
     </div>
 
 </body>
+
 </html>
