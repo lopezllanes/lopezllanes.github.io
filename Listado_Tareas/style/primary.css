@@ -1,0 +1,115 @@
+body {
+    background-color: #EFEFEF;
+    font-family: 'Overpass', sans-serif;
+    margin: 0;
+    color: gray;
+}
+
+.container {
+    padding: 2%;
+    width: 50%;
+    margin: auto;
+}
+
+h2 {
+    border-bottom: 2px gray solid;
+}
+
+h1 {
+    color: gray;
+    font-size: 1.7em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+button {
+    background: none;
+    border-radius: 9px;
+    font-size: 13px;
+    margin: 3px 7px;
+    padding: 5px 8px;
+    cursor: pointer;
+}
+
+
+button.add {
+    border: 1px solid green;
+    color: green;
+}
+
+button.edit {
+    border: 1px solid darkblue;
+    color: darkblue;
+}
+
+button.delete {
+    border: 1px solid red;
+    color: red;
+}
+
+
+button.add:hover {
+    border: 1px solid limegreen;
+    color: limegreen;
+}
+
+button.edit:hover {
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+}
+
+button.delete:hover {
+    border: 2px solid red;
+    color: red;
+    font-weight: bolder;
+}
+
+input[type="text"] {
+    margin: 5px;
+    font-size: 15px;
+    height: 11px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+input[type="text"]:focus {
+    border: 1px solid green;
+    box-shadow: 0 0 5px green;
+    outline: none;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style-type: none;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+
+ul#completed-tasks li label {
+    text-decoration: line-through;
+}
+
+.error-bar {
+    border: 1px solid red;
+    color: red;
+    font-weight: bold;
+    background-color: #ffbdce;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+.hide-bar {
+    visibility: hidden;
+}
+
+.show-bar {
+    visibility: visible;
+}
