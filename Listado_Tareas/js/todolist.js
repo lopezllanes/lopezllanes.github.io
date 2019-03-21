@@ -137,6 +137,11 @@
      * @param task the new task.
      */
     const addTaskToList = (task) => {
+
+        if(typeof task === "string") {
+            task = JSON.parse(task);
+        }
+
         let newItem = document.createElement('li');
         newItem.setAttribute('id', `task-${task.id}`);
 
@@ -178,10 +183,16 @@
         const id = e.target.dataset.id;
 
         let currentDOMTask = document.getElementById(`task-${id}`);
+        let isCompleted = currentDOMTask.children[0].children[0].checked
         currentDOMTask.querySelector("label > input[type=checkbox]").remove();
 
         let currentTask = new Task(currentDOMTask.querySelector("label").innerHTML.trim());
         currentTask.id = id;
+        if (isCompleted) {
+            currentTask.status = "TERMINADO";
+        } else {
+            currentTask.status = "PENDIENTE";
+        }
 
         currentDOMTask.querySelector('label').remove();
 
@@ -239,7 +250,13 @@
         let label = document.createElement('label');
 
         currentDOMTask.insertBefore(label, currentDOMTask.children[0]);
-        label.innerHTML = `<input type="checkbox"/> ${task.description}`;
+        var currentTaskJson = JSON.parse(currentTask);
+        if (currentTaskJson.status === "TERMINADO") {
+            label.innerHTML = `<input type="checkbox" checked/> ${task.description}`;
+        } else {
+            label.innerHTML = `<input type="checkbox"/> ${task.description}`;
+        }
+        
         addOnChangeEvent(task);
 
         currentDOMTask.insertBefore(label, currentDOMTask.children[0]);
