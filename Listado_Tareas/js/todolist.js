@@ -1,11 +1,12 @@
 /**
  *
  *
- * @author carpincho
- * @since 04/03/19.
+ * @author Alicia lopez, Francisco Lezcano.
+ * @since 14/04/19.
  * @version 1.0
- */
-(() => {
+   
+(() => {*/
+(($) => {
     'use strict';
 
     const API_URL = 'https://task-backend-fpuna.herokuapp.com/tasks';
@@ -34,7 +35,8 @@
         //  - Como parámetro `callbackError` envía una función que llame al método `showError` enviando un mensaje de
         //    error
         //  - La llamada debe ser asíncrona.
-        Ajax.sendGetRequest(API_URL, null, MediaFormat.JSON, loadTasks, showError, true);
+        //Ajax.sendGetRequest(API_URL, null, MediaFormat.JSON, loadTasks, showError, true);
+        $.get(API_URL,function(loadTasks){});
 
     };
 
@@ -88,8 +90,10 @@
         //  - La llamada debe ser asíncrona.
         //  - No te olvides de envíar el parámetro `task` para que se cree la tarea.
 
-        Ajax.sendPostRequest(API_URL, task, MediaFormat.JSON, addTaskToList, showError, true, MediaFormat.JSON)
-
+       // Ajax.sendPostRequest(API_URL, task, MediaFormat.JSON, addTaskToList, showError, true, MediaFormat.JSON)
+        $.post(API_URL,task,function(addTaskToList){
+            $(MediaFormat.JSON);
+        });
 
         return false;
     };
@@ -104,7 +108,7 @@
     /**
      * We associate a function to manipulate the DOM once the checkbox value is changed.
      * Change the task to the completed or incomplete list (according to the status)
-     */
+    */
     const addOnChangeEvent = (task) => {
         const checkBox = document.getElementById(`task-${task.id}`).querySelector('label > input');
         checkBox.onchange = (e) => {
@@ -302,4 +306,6 @@
         var elementoBorrar = document.getElementById(`task-${id}`);
         Ajax.sendDeleteRequest(API_URL + "/" + id, elementoBorrar, MediaFormat.JSON, removeTaskFromList, showError, true, MediaFormat.JSON)
     };
-})();
+//})(); 
+})(jQuery);
+
