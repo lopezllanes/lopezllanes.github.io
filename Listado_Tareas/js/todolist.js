@@ -36,7 +36,9 @@
         //    error
         //  - La llamada debe ser asíncrona.
         //Ajax.sendGetRequest(API_URL, null, MediaFormat.JSON, loadTasks, showError, true);
-        $.get(API_URL,function(loadTasks){});
+        $.get(API_URL,function(data){
+            loadTasks(data);
+        });
 
     };
 
@@ -59,7 +61,8 @@
      */
     const loadTasks = (array) => {
 
-        let tasks = JSON.parse(array);
+        //let tasks = JSON.parse(array); ******************
+        let tasks = array;
         for (let i in tasks) {
             if (tasks.hasOwnProperty(i)) {
                 addTaskToList(tasks[i]);
@@ -90,9 +93,27 @@
         //  - La llamada debe ser asíncrona.
         //  - No te olvides de envíar el parámetro `task` para que se cree la tarea.
 
-       // Ajax.sendPostRequest(API_URL, task, MediaFormat.JSON, addTaskToList, showError, true, MediaFormat.JSON)
-        $.post(API_URL,task,function(addTaskToList){
-            $(MediaFormat.JSON);
+        //Ajax.sendPostRequest(API_URL, task, MediaFormat.JSON, addTaskToList, showError, true, MediaFormat.JSON)
+        //$.post(API_URL, JSON.stringify(task), function(){
+        //    //$(MediaFormat.JSON);
+        //    addTaskToList(task);
+        //}).done(function() { 
+        //    alert('Request done!'); 
+        //})
+        //.fail(function(jqxhr, settings, ex) { 
+        //    alert('failed, ' + ex); 
+        //});
+
+        $.ajax({
+            url: API_URL,
+            type: 'POST',
+            data: JSON.stringify(task),
+            dataType: 'application/json',
+            success: function(result) {
+                revertHTMLChangeOnEdit();
+            }
+        }).fail(function(jqxhr, settings, ex) { 
+            alert('failed, ' + ex); 
         });
 
         
@@ -224,7 +245,17 @@
             //  - La llamada debe ser asíncrona.
             //  - No te olvides de envíar el parámetro para que se cree la tarea.
             
-            Ajax.sendPutRequest(API_URL + "/" + id, currentTask, MediaFormat.JSON, revertHTMLChangeOnEdit, showError, true, MediaFormat.JSON)
+            //Ajax.sendPutRequest(API_URL + "/" + id, currentTask, MediaFormat.JSON, revertHTMLChangeOnEdit, showError, true, MediaFormat.JSON)
+            $.ajax({
+                url: API_URL + "/" + id,
+                type: 'PUT',
+                data: currentTask,
+                success: function(result) {
+                    revertHTMLChangeOnEdit();
+                }
+            }).fail(function(jqxhr, settings, ex) { 
+                alert('failed, ' + ex); 
+            });
         };
 
         let buttonCancel = document.createElement('button');
