@@ -251,7 +251,7 @@
                 url: API_URL + "/" + id,
                 type: 'PUT',
                 data: currentTask,
-                contentType: "application/json; charset=utf-8", // this
+                contentType: "application/json", 
                 dataType: "json",
                 success: function(result) {
                     revertHTMLChangeOnEdit();
@@ -339,7 +339,19 @@
         //   - La llamada debe ser asíncrona.
         debugger
         var elementoBorrar = document.getElementById(`task-${id}`);
-        Ajax.sendDeleteRequest(API_URL + "/" + id, elementoBorrar, MediaFormat.JSON, removeTaskFromList, showError, true, MediaFormat.JSON)
+        //Ajax.sendDeleteRequest(API_URL + "/" + id, elementoBorrar, MediaFormat.JSON, removeTaskFromList, showError, true, MediaFormat.JSON)
+        $.ajax({
+            url: API_URL,
+            type: 'DELETE',
+            data: elementoBorrar,
+            contentType: "application/json; charset=utf-8", 
+            dataType: "json",
+            success: function(result) {
+                removeTaskFromList();
+            }
+        }).fail(function(jqxhr, settings, ex) { 
+            alert('failed, ' + ex); 
+        });
     };
 //})(); 
 })(jQuery);
