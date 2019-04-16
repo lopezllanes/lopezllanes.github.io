@@ -108,7 +108,8 @@
             url: API_URL,
             type: 'POST',
             data: JSON.stringify(task),
-            dataType: 'application/json',
+            contentType: "application/json; charset=utf-8", // this
+            dataType: "json",
             success: function(result) {
                 revertHTMLChangeOnEdit();
             }
@@ -250,6 +251,8 @@
                 url: API_URL + "/" + id,
                 type: 'PUT',
                 data: currentTask,
+                contentType: "application/json; charset=utf-8", // this
+                dataType: "json",
                 success: function(result) {
                     revertHTMLChangeOnEdit();
                 }
