@@ -111,10 +111,10 @@
             contentType: "application/json; charset=utf-8", // this
             dataType: "json",
             success: function(result) {
-                revertHTMLChangeOnEdit();
+                addTaskToList(task);
             }
-        }).fail(function(jqxhr, settings, ex) { 
-            alert('failed, ' + ex); 
+        }).fail(function(jqxhr, settings, ex) {
+            showError("ERROR AL AGREGAR UNA NUEVA TAREA");
         });
 
         
@@ -154,7 +154,23 @@
             let newTask = new Task(task.description);
             newTask.id = task.id;
             newTask.status = newStatus;
-            Ajax.sendPutRequest(API_URL + "/" + task.id, task, MediaFormat.JSON, removeTaskFromList, showError, true, MediaFormat.JSON)
+            //Ajax.sendPutRequest(API_URL + "/" + task.id, task, MediaFormat.JSON, removeTaskFromList, showError, true, MediaFormat.JSON)
+            //addTaskToList(newTask);
+            $.ajax({
+                url: API_URL + "/" + task.id,
+                type: 'PUT',
+                data: JSON.stringify(task),
+                headers: {          
+                    Accept: "application/json",         
+                    "Content-Type": "application/json; charset=utf-8"   
+                  },
+                success: function(result) {
+                    //revertHTMLChangeOnEdit(JSON.stringify(currentTask));
+                    removeTaskFromList(task.id)
+                }
+            }).fail(function(jqxhr, settings, ex) { 
+                showError("ERROR AL MODIFICAR UNA TAREA");
+            });
             addTaskToList(newTask);
         };
     };
@@ -250,14 +266,16 @@
             $.ajax({
                 url: API_URL + "/" + id,
                 type: 'PUT',
-                data: currentTask,
-                contentType: "application/json", 
-                dataType: "json",
+                data: JSON.stringify(currentTask),
+                headers: {          
+                    Accept: "application/json",         
+                    "Content-Type": "application/json; charset=utf-8"   
+                  },
                 success: function(result) {
-                    revertHTMLChangeOnEdit();
+                    revertHTMLChangeOnEdit(JSON.stringify(currentTask));
                 }
             }).fail(function(jqxhr, settings, ex) { 
-                alert('failed, ' + ex); 
+                showError("ERROR AL MODIFICAR UNA TAREA");
             });
         };
 
@@ -320,7 +338,8 @@
             taskId = id;
         }
         
-        var elementoBorrar = document.getElementById(`task-${taskId}`);
+        //var elementoBorrar = document.getElementById(`task-${taskId}`);
+        var elementoBorrar = document.getElementById(`task-${id}`);
         var padreElementoBorrar = elementoBorrar.parentNode;
         padreElementoBorrar.removeChild(elementoBorrar);
     };
